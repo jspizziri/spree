@@ -254,7 +254,7 @@ module Spree
           when ActiveRecord::Base then t
           when String
             Taxon.find_by(name: t) ||
-            Taxon.where("#{taxons}.permalink LIKE ? OR #{taxons}.permalink = ?", "%/#{t}/", "#{t}/").first
+            Taxon.where("#{taxons}.permalink LIKE ? OR #{taxons}.permalink = ?", "%/#{t}", "#{t}").first
           end
         }.compact.flatten.uniq
       end
